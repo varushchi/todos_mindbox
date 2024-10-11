@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import './App.css';
 import TodoItem from './components/TodoItem';
 
-function App() {
+interface Todo{
+  id: string,
+  value: string,
+  isCompleted: boolean,
+}
 
-  interface Todo{
-    id: string,
-    value: string,
-    isCompleted: boolean,
-  }
+function App() {
 
   const [todoList, setTodolist] = useState<Todo[]>([])
   const [inputValue, setInputValue] = useState('')
@@ -75,13 +75,13 @@ function App() {
   return (
     <div className="App">
       <h1>todos</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form role='form' onSubmit={(e) => handleSubmit(e)}>
         <input value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
       </form>
       <div className='todos'>
         {todoListElems}
       </div>
-      <p>{uncompetedItems !== 0 && `${uncompetedItems} items left`}</p>
+      <p>{uncompetedItems !== 0 && `${uncompetedItems} item${uncompetedItems > 1 ? 's' : ''} left`}</p>
       <button onClick={() => setFilter('All')}>All</button>
       <button onClick={() => setFilter('Active')}>Active</button>
       <button onClick={() => setFilter('Completed')}>Completed</button>
