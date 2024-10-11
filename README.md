@@ -1,3 +1,3 @@
-#Тестовое задание Frontend junior в Mindbox 
+# Тестовое задание Frontend junior в Mindbox 
 
-##[демо сайта](https://varushchi.github.io/todos_mindbox/)
+## [Демо сайта](https://varushchi.github.io/todos_mindbox/)
