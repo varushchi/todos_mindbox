@@ -46,9 +46,9 @@ describe(App, () => {
     fireEvent.change(input, {target: {value: 'todo1'}}) // write first todo
     fireEvent.submit(form) // add first todo
     const button = getByRole('button', {name: ''})
+    fireEvent.click(button) // change first todo to completed 
     fireEvent.change(input, {target: {value: 'todo2'}}) // write second todo
     fireEvent.submit(form) // add second todo
-    fireEvent.click(button) // change first todo to completed 
     const clearCompletedButton = getByRole('button', {name: 'Clear completed'})
     const todos = container.querySelector('.todos')
     fireEvent.click(clearCompletedButton) // clear all completed todos
@@ -71,5 +71,4 @@ describe(App, () => {
     fireEvent.click(button) // change first todo to completed 
     expect(itemsLeft.textContent).toEqual('1 item left')
   })
-  
 })

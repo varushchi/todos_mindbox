@@ -43,19 +43,21 @@ function App() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault()
-    setTodolist(() => {
-      return(
-        [
-          ...todoList,
-          {
-            id: Math.random().toFixed(10).replace('.',''),
-            value: inputValue,
-            isCompleted: false
-          }
-        ]
-      )
-    })
-    setInputValue('')
+    if (inputValue){
+      setTodolist(() => {
+        return(
+          [
+            ...todoList,
+            {
+              id: Math.random().toFixed(10).replace('.',''),
+              value: inputValue,
+              isCompleted: false
+            }
+          ]
+        )
+      })
+      setInputValue('')
+    }
   }
 
   function handleClearCompleted(){
@@ -75,17 +77,21 @@ function App() {
   return (
     <div className="App">
       <h1>todos</h1>
-      <form role='form' onSubmit={(e) => handleSubmit(e)}>
-        <input value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
-      </form>
-      <div className='todos'>
-        {todoListElems}
-      </div>
-      <p>{uncompetedItems !== 0 && `${uncompetedItems} item${uncompetedItems > 1 ? 's' : ''} left`}</p>
-      <button onClick={() => setFilter('All')}>All</button>
-      <button onClick={() => setFilter('Active')}>Active</button>
-      <button onClick={() => setFilter('Completed')}>Completed</button>
-      <button onClick={() => handleClearCompleted()}>Clear completed</button>
+      <main>
+        <form role='form' onSubmit={(e) => handleSubmit(e)}>
+          <input value={inputValue} placeholder='What need to be done?' onChange={(e) => setInputValue(e.target.value)}/>
+        </form>
+        <div className='todos'>
+          {todoListElems}
+        </div>
+        <div className='filters'>
+          <p>{uncompetedItems !== 0 && `${uncompetedItems} item${uncompetedItems > 1 ? 's' : ''} left`}</p>
+          <button className={filter === 'All' ? 'active-button' : ''} onClick={() => setFilter('All')}>All</button>
+          <button className={filter === 'Active' ? 'active-button' : ''} onClick={() => setFilter('Active')}>Active</button>
+          <button className={filter === 'Completed' ? 'active-button' : ''} onClick={() => setFilter('Completed')}>Completed</button>
+          <button onClick={() => handleClearCompleted()}>Clear completed</button>
+        </div>
+      </main>
     </div>
   );
 }
