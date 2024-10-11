@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import TodoItem from './TodoItem';
+import TodoItem from './components/TodoItem';
 import React from 'react';
-import App from '../App';
+import App from './App';
 
 describe(TodoItem, () => {
   it('value dispalys correctly', () => {
