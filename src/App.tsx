@@ -79,7 +79,7 @@ function App() {
       <h1>todos</h1>
       <main>
         <form role='form' onSubmit={(e) => handleSubmit(e)}>
-          <input value={inputValue} placeholder='What need to be done?' onChange={(e) => setInputValue(e.target.value)}/>
+          <input value={inputValue} placeholder='What needs to be done?' onChange={(e) => setInputValue(e.target.value)}/>
         </form>
         <div className='todos'>
           {todoListElems}
