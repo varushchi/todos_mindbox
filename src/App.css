@@ -46,6 +46,7 @@
       align-items: center;
       justify-content: center;
       color: rgba(0, 0, 0, 0.6);
+      margin-top: 10px;
 
       & > button{
         background-color: white;
@@ -60,6 +61,7 @@
       }
   
       & > p{
+        margin: 0;
         margin-right: auto;
       }
       & > :last-child{
